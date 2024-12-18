@@ -1,0 +1,5 @@
+config SHIELD_KEYATURA_LEFT
+    def_bool $(shields_list_contains,keyatura_left)
+
+config SHIELD_KEYATURA_RIGHT
+    def_bool $(shields_list_contains,keyatura_right)
