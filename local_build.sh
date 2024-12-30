@@ -8,6 +8,7 @@ set -euxo pipefail
 
 build_and_copy () {
     local side=$1
+    rm -rf $CURRENT_DIR/build/$side
     west build \
         -p -b nice_nano_v2 \
         -S studio-rpc-usb-uart \
@@ -18,6 +19,18 @@ build_and_copy () {
         -DCONFIG_ZMK_STUDIO=y 
 
     cp "$CURRENT_DIR/build/$side/zephyr/zmk.uf2" "$CURRENT_DIR/build/$side/keyatura_$side.uf2"
+}
+
+build_reset () {
+    rm -rf $CURRENT_DIR/build/reset
+    west build \
+        -p -b nice_nano_v2 \
+        -S studio-rpc-usb-uart \
+        -d "$CURRENT_DIR/build/reset" -- \
+        -DZMK_CONFIG="$CURRENT_DIR" \
+        -DSHIELD=settings_reset
+
+    cp "$CURRENT_DIR/build/reset/zephyr/zmk.uf2" "$CURRENT_DIR/build/reset/reset.uf2"
 }
 
 CURRENT_DIR="$(pwd)"
@@ -31,8 +44,9 @@ mkdir -p $CURRENT_DIR/build
 
 pushd $ZMK_APP_DIR
 
-# build_and_copy left
 build_and_copy right
+build_reset
+# build_and_copy right
 
 deactivate
 

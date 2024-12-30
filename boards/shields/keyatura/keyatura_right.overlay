@@ -1,6 +1,6 @@
 #include "keyatura.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-
+#include <input/processors.dtsi>
 
 &default_transform {
 	col-offset = <5>;
@@ -47,8 +47,15 @@
 };
 
 / {
-  trackball_listener {
-    compatible = "zmk,input-listener";
-    device = <&trackball>;
-  };
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors = <&zip_temp_layer 3 2000>;
+
+        scroller {
+            layers = <4>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
+
+    };
 };
