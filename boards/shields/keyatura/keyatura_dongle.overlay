@@ -2,10 +2,14 @@
 #include "keyatura-layouts.dtsi"
 #include "keyatura.dtsi"
 
+&trackball_listener {
+    status = "okay";
+};
+
 / {
     chosen {
         zmk,kscan = &mock_kscan;
-        //zmk,physical-layout = &physical_layout0;
+        zmk,physical-layout = &physical_layout0;
     }; 
 
     mock_kscan: kscan_0 {
