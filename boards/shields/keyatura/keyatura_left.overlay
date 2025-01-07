@@ -1,1 +1,5 @@
 #include "keyatura.dtsi"
+
+&trackball_split {
+    status = "disabled";
+};

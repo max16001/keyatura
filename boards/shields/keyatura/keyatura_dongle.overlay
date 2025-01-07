@@ -1,0 +1,28 @@
+#include <input/processors.dtsi>
+#include "keyatura.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    }; 
+
+    mock_kscan: kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+
+};
+
+&trackball_listener {
+    status = "okay";
+    
+    input-processors = <&zip_temp_layer 3 2000>;
+
+    scroller {
+        layers = <4>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
+
+};
