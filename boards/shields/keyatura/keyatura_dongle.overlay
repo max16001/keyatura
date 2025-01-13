@@ -2,10 +2,6 @@
 #include "keyatura-layouts.dtsi"
 #include "keyatura.dtsi"
 
-&trackball_listener {
-    status = "okay";
-};
-
 / {
     chosen {
         zmk,kscan = &mock_kscan;
@@ -19,4 +15,29 @@
         events = <0>;
     };
 
+    /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;
+    };
+};
+
+&right_listener {
+    status = "okay";
+    input-processors = <&zip_temp_layer 3 2000>;
+
+    scroller {
+        layers = <1>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
+};
+
+&left_listener {
+    status = "okay";
+    input-processors = <&zip_temp_layer 3 2000>;
+
+    scroller {
+        layers = <1>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
 };

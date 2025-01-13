@@ -13,6 +13,10 @@
     status = "okay";
 };
 
-&trackball_split {
+&left_split {
+    status = "disabled";
+};
+
+&right_split {
     device = <&trackball>;
 };
