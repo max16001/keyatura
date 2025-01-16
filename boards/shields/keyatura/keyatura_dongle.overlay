@@ -24,20 +24,15 @@
 
 &right_listener {
     status = "okay";
-    input-processors = <&zip_temp_layer 3 2000>;
+    input-processors = <&zip_temp_layer 4 500>;
 
     scroller {
-        layers = <1>;
+        layers = <2>;
         input-processors = <&zip_xy_to_scroll_mapper>;
     };
-};
 
-&left_listener {
-    status = "okay";
-    input-processors = <&zip_temp_layer 3 2000>;
-
-    scroller {
-        layers = <1>;
-        input-processors = <&zip_xy_to_scroll_mapper>;
+    sniper {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 1 4>;
     };
 };
