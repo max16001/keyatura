@@ -11,3 +11,4 @@ features:
 siblings:
   - keyatura_left
   - keyatura_right
+  - keyatura_dongle

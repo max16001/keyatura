@@ -11,12 +11,25 @@ build_and_copy () {
     rm -rf $CURRENT_DIR/build/$side
     west build \
         -p -b nice_nano_v2 \
-        -S studio-rpc-usb-uart \
         -d "$CURRENT_DIR/build/$side" -- \
         -DZMK_CONFIG="$CURRENT_DIR" \
         -DSHIELD=keyatura_$side \
         -DZMK_EXTRA_MODULES="$HOME/zmk_modules/zmk-pmw3610-driver" \
-        -DCONFIG_ZMK_STUDIO=y 
+
+    cp "$CURRENT_DIR/build/$side/zephyr/zmk.uf2" "$CURRENT_DIR/build/$side/keyatura_$side.uf2"
+}
+
+build_dongle () {
+    local side=dongle
+    rm -rf $CURRENT_DIR/build/$side
+    west build \
+        -p -b nice_nano_v2 \
+        -S studio-rpc-usb-uart \
+        -S zmk-usb-logging \
+        -d "$CURRENT_DIR/build/$side" -- \
+        -DZMK_CONFIG="$CURRENT_DIR" \
+        -DSHIELD=keyatura_$side \
+        -DCONFIG_ZMK_STUDIO=y
 
     cp "$CURRENT_DIR/build/$side/zephyr/zmk.uf2" "$CURRENT_DIR/build/$side/keyatura_$side.uf2"
 }
@@ -44,9 +57,10 @@ mkdir -p $CURRENT_DIR/build
 
 pushd $ZMK_APP_DIR
 
-build_and_copy right
-build_reset
+# build_and_copy left
 # build_and_copy right
+build_dongle 
+# build_reset
 
 deactivate
 
