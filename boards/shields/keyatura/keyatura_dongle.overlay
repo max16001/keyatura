@@ -1,4 +1,5 @@
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 #include "keyatura-layouts.dtsi"
 #include "keyatura.dtsi"
 
@@ -26,13 +27,14 @@
     status = "okay";
     input-processors = <&zip_temp_layer 4 500>;
 
-    scroller {
+    scroll-scaler {
         layers = <2>;
-        input-processors = <&zip_xy_scaler 1 4 &zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_scaler 1 2 &zip_xy_to_scroll_mapper>;
+        process-next;
     };
 
     sniper {
         layers = <3>;
-        input-processors = <&zip_xy_scaler 1 4>;
+        input-processors = <&zip_xy_scaler 1 2>;
     };
 };
