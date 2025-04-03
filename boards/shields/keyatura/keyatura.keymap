@@ -2,7 +2,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 #define U_TAPPING_TERM 220
 #define U_QUICK_TAP 200
@@ -96,24 +95,6 @@
 &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp AMPS        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE    &kp SINGLE_QUOTE
 &kp F11  &kp F12  &kp F13  &kp F14  &kp F15  &kp ASTERISK    &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PERCENT  &trans
          &trans   &trans   &trans   &trans   &kp LA(LSHIFT)  &kp DELETE
-            >;
-        };
-
-        SNIPER {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        AUTO-MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &mo 3   &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };

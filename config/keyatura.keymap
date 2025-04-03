@@ -100,23 +100,6 @@
             >;
         };
 
-        SNIPER {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        AUTO-MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &mo 3   &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
