@@ -1,0 +1,19 @@
+if SHIELD_KEYATURA_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Keyatura"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+	default y
+	
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+endif
+
+if SHIELD_KEYATURA_LEFT || SHIELD_KEYATURA_RIGHT || SHIELD_KEYATURA_DONGLE
+
+config ZMK_SPLIT
+    default y
+
+endif
