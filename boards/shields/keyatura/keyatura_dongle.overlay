@@ -1,0 +1,40 @@
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+#include "keyatura-layouts.dtsi"
+#include "keyatura.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zmk,physical-layout = &physical_layout0;
+    }; 
+
+    mock_kscan: kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+
+    /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;
+    };
+};
+
+&right_listener {
+    status = "okay";
+    input-processors = <&zip_temp_layer 4 500>;
+
+    scroll-scaler {
+        layers = <2>;
+        input-processors = <&zip_xy_scaler 1 2 &zip_xy_to_scroll_mapper>;
+        process-next;
+    };
+
+    sniper {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 1 2>;
+    };
+};
